@@ -23,21 +23,23 @@ module.exports = env => {
     },
     plugins: [
       ...(isDevMode ? [] : [new CleanWebpackPlugin()]),
-      new CopyPlugin([
-        {
-          from: "./src/manifest.json",
-          transform: makeManifestTransformer(isTestMode),
-        },
-        {
-          from: "./src/content/content.css",
-        },
-        {
-          from: "./src/options/",
-        },
-        {
-          from: "./src/assets/",
-        },
-      ]),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: "./src/manifest.json",
+            transform: makeManifestTransformer(isTestMode),
+          },
+          {
+            from: "./src/content/content.css",
+          },
+          {
+            from: "./src/options/",
+          },
+          {
+            from: "./src/assets/",
+          },
+        ],
+      }),
     ],
     devtool: isDevMode ? "inline-source-map" : false,
   };

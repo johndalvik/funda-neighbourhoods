@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:20
 
 RUN apt update && apt install -y xvfb firefox-esr
 

@@ -1,5 +1,5 @@
 import { readUserSettings } from "../common/readUserSettings";
-import { fetchNeighbourhoodStats, fetchNeighbourhoodMeta } from "./api";
+import { fetchNeighbourhoodMeta, fetchNeighbourhoodStats } from "./api";
 
 import { getProperties, selectDefaultProperties } from "./utils";
 
