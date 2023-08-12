@@ -17,9 +17,7 @@ export function wrapTableWithTitle(properties, tableHtml) {
 
 export function makeTableHtml(properties) {
   const sectionsHtml = makeTableSectionsHtml(properties);
-  const tableHtml = wrapTableRowsHtml(sectionsHtml);
-
-  return tableHtml;
+  return wrapTableRowsHtml(sectionsHtml);
 }
 
 function makeTableSectionsHtml(properties) {
@@ -64,7 +62,7 @@ function makeRowsHtml(group) {
       row => `
         <dt data-test="propertyRowLabel-${row.name}">${row.label}</dt>
         <dd data-test="propertyRowValue-${row.name}" title="${row.value} (${row.year})">${row.value}</dd>
-      `
+      `,
     )
     .join("");
 

@@ -1,3 +1,14 @@
+html,
+body {
+  width: 100%;
+  font-size: 16px;
+}
+
+#options-table {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .options-page-section-header {
   font-size: 14px;
   font-weight: bold;

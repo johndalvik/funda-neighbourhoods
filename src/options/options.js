@@ -10,13 +10,9 @@ async function initializePage() {
   const headerHtml = makeHeaderHtml();
   const optionsTableHtml = makeOptionsTableHtml(userSettings);
 
-  document
-    .getElementById("header")
-    .insertAdjacentHTML("afterbegin", headerHtml);
+  document.getElementById("header").insertAdjacentHTML("afterbegin", headerHtml);
 
-  document
-    .getElementById("options-table")
-    .insertAdjacentHTML("afterbegin", optionsTableHtml);
+  document.getElementById("options-table").insertAdjacentHTML("afterbegin", optionsTableHtml);
 
   document.addEventListener("click", handleClicks);
 }
@@ -36,7 +32,11 @@ function makeOptionsTableHtml(userSettings) {
       const group = groupedProperties[groupName];
       const optionsSectionHtml = makeOptionsSectionHtml(group, userSettings);
 
-      return headerHtml + optionsSectionHtml;
+      return `
+      <section>
+        ${headerHtml}
+        ${optionsSectionHtml}
+      </section>`;
     })
     .join("");
 }
@@ -84,14 +84,12 @@ function makeSectionHeaderHtml(groupName) {
   const headerText = chrome.i18n.getMessage(groupName);
 
   return `
-    <div class="options-page-section-header" data-test="optionsPageGroupHeader-${groupName}">
+    <h2 class="options-page-section-header" data-test="optionsPageGroupHeader-${groupName}">
       ${headerText}
-    </div>
+    </h2>
   `;
 }
 
 function makeOptionsSectionHtml(group, userSettings) {
-  return group
-    .map(option => makeOptionHtml(option.name, userSettings))
-    .join("");
+  return group.map(option => makeOptionHtml(option.name, userSettings)).join("");
 }
